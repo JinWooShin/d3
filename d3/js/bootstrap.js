@@ -3,13 +3,17 @@
     "use strict";
     define([
         'angular',
-        'controller/indexCtrl',
-        'controller/mapCtrl'
-    ], function (angular, IndexCtrl, MapCtrl) {
+
+        'service/mapService',
+
+        'controller/indexCtrl'
+    ], function (angular, MapService, IndexCtrl) {
         function init() {
             var App = angular.module('app', ['ui.bootstrap']);
+
+            MapService.start(App);
+
             IndexCtrl.start(App);
-            MapCtrl.start(App);
 
             angular.bootstrap(document.body, ['app']);
             return app;
