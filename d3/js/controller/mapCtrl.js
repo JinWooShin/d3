@@ -6,7 +6,7 @@
         'esri/map'
     ], function (angular, Map) {
         function init(App) {
-            App.controller('MapCtrl', ['$rootScope', '$scope', '$attrs', function ($rootScope, $scope, $attrs) {
+            App.controller('MapCtrl', ['$rootScope', '$scope', '$attrs', 'MapService', function ($rootScope, $scope, $attrs, MapService) {
                 var self = this;
                 var mapDiv, layers = [];
 
@@ -30,18 +30,18 @@
                         zoom: $attrs.zoom ? parseInt($attrs.zoom) : 2,
                         basemap: $attrs.basemap ? $attrs.basemap : 'streets'
                     };
-                    $scope.map = new Map($attrs.id, options);
+                    $scope.map = MapService.createMap($attrs.id, options);
 
-                    $scope.map.on('load', function () {
-                        $rootScope.$broadcast('map-load');
-                    });
-                    $scope.map.on('click', function (e) {
-                        $rootScope.$broadcast('map-click', e);
-                    });
-                    if (layers.length > 0) {
-                        $scope.map.addLayers(layers);
-                        layers = [];
-                    }
+                    //$scope.map.on('load', function () {
+                    //    $rootScope.$broadcast('map-load');
+                    //});
+                    //$scope.map.on('click', function (e) {
+                    //    $rootScope.$broadcast('map-click', e);
+                    //});
+                    //if (layers.length > 0) {
+                    //    $scope.map.addLayers(layers);
+                    //    layers = [];
+                    //}
                 };
 
                 $scope.addLayer = function (layer) {
