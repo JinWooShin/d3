@@ -24,14 +24,14 @@
             }
         ]
     });
-
+    var App = angular.module('app', ['ui.bootstrap']);
     require([
         'dojo/ready',
         'js/bootstrap'
     ], function (ready, bootstrap) {
         ready(function () {
             console.log("start the bootstrapper");
-            bootstrap.start();
+            bootstrap.start(App);
         });
     });
 }).call(this);

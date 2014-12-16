@@ -2,17 +2,14 @@
 (function () {
     "use strict";
     define([
-        'angular',
         'controller/indexCtrl',
-        'controller/mapCtrl'
-    ], function (angular, IndexCtrl, MapCtrl) {
-        function init() {
-            var App = angular.module('app', ['ui.bootstrap']);
-            IndexCtrl.start(App);
-            MapCtrl.start(App);
-
+        'controller/mapCtrl',
+        'controller/toolCtrl'
+    ], function (IndexCtrl, MapCtrl, toolCtrl) {
+        
+        function init(App) {    
             angular.bootstrap(document.body, ['app']);
-            return app;
+            return App;
         }
         return { start: init };
     });

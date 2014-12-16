@@ -1,11 +1,12 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" ng-app="app">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
 
     <link rel="stylesheet" href="http://js.arcgis.com/3.11/esri/css/esri.css"/>
     <link rel="stylesheet" href="Content/bootstrap.css"/>
     <link rel="stylesheet" href="Content/font-awesome.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
     
     <script src="Scripts/d3.js"></script>
     <script src="http://js.arcgis.com/3.11/"></script>
@@ -18,10 +19,17 @@
     <script src="js/main.js"></script>
 </head>
 <body>
-    <div ng-controller="IndexCtrl">
-        {{test}}
+    <div class="container layout">
+        <tool-menu></tool-menu>
+        <div class="row">
+            <div class="col-xs-6">
+                <esri-map id="map"></esri-map>
+            </div>
+            <div class="col-xs-6">
+
+            </div>
+        </div>
         
     </div>
-    <esri-map id="map" basemap="gray"></esri-map>
 </body>
 </html>

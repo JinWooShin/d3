@@ -59,8 +59,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\main.css" />
     <Content Include="js\controller\mapCtrl.js" />
+    <Content Include="js\controller\toolCtrl.js" />
     <Content Include="js\service\layerService.js" />
+    <Content Include="js\templates\toolbarTemplate.html" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
