@@ -2,10 +2,12 @@
 (function () {
     "use strict";
     define([
+        'service/esriService',
+
         'controller/indexCtrl',
         'controller/mapCtrl',
         'controller/toolCtrl'
-    ], function (IndexCtrl, MapCtrl, toolCtrl) {
+    ], function (MapService, IndexCtrl, MapCtrl, toolCtrl) {
         
         function init(App) {    
             angular.bootstrap(document.body, ['app']);
