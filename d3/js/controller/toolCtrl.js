@@ -13,7 +13,7 @@
             var option = { id: type, styling: !useD3, outFields:"[*]", className:type};
             var layer = null;
             if (url) {
-                layer = EsriService.createLayer(url, option, "feature")
+                layer = EsriService.createLayer(url, option, "feature");
             }
             if (useD3) {
                 quantize = d3.scale.quantize().domain([0, 100]).range(d3.range(5));
