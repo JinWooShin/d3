@@ -58,12 +58,12 @@
                             throw new Error("invalid layer parameter");
                         }
                     },
-                    clearAllLayers: function () {
-                        var layerIds = map.layerIds;
+                    clearAllGraphicLayers: function () {
+                        var layerIds = map.graphicsLayerIds;
                         angular.forEach(layerIds, function (id) {
-                            if (map.basemapLayerIds.indexOf(id) === -1) {
+                            //if (map.basemapLayerIds.indexOf(id) === -1) {
                                 map.removeLayer(map.getLayer(id));
-                            }
+                            //}
                         });
                     }
                 }

@@ -2,8 +2,8 @@
     "use strict";
     angular.module('app')
     
-    .controller('IndexCtrl', ['$scope', function ($scope) {
-        $scope.test = "Hello World";
+    .controller('indexCtrl', ['$scope', function ($scope) {
+        $scope.result = false;
     }]);
       
 }).call(this);
