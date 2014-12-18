@@ -5,3 +5,56 @@
     margin-top: 5px;
     margin-bottom:10px;
 }
+
+html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'News Cycle', sans-serif;
+            font-size: 0.90em;
+        }
+
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+        
+        .hotspring > path {
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .hotspring > path[data-classification="0"] {
+            stroke: #f5cb00;
+            stroke-width: 3;
+            stroke-opacity: 1;            
+        }
+
+        .hotspring > path[data-classification="1"] {
+            stroke: #f67682;
+            stroke-width: 5;
+            stroke-opacity: 0.85;
+        }
+
+        .hotspring > path[data-classification="2"] {
+            stroke: #f75e64;
+            stroke-width: 8;
+            stroke-opacity: 0.7;
+        }
+
+        .hotspring > path[data-classification="3"] {
+            stroke: #f72d3f;
+            stroke-width: 11;
+            stroke-opacity: 0.45;
+        }
+
+        .hotspring > path[data-classification="4"] {
+            stroke: #F70019;
+            stroke-width: 22;
+            stroke-opacity: 0.2;
+        }
+
+        #legend svg {
+            vertical-align: middle;
+        }
