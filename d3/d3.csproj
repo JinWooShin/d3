@@ -64,6 +64,7 @@
     <Content Include="js\controller\toolCtrl.js" />
     <Content Include="js\service\esriService.js" />
     <Content Include="js\service\layerService.js" />
+    <Content Include="js\service\mapService.js" />
     <Content Include="js\templates\toolbarTemplate.html" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">

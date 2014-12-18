@@ -2,7 +2,10 @@
     "use strict";
 
     angular.module('app')
-    .service('LayerService', ['$log', '$q', '$http', function ($log, $q, $http) {
+    .service('LayerService', ['$log', '$q', '$http', 'EsriService', function ($log, $q, $http, EsriService) {
+        this.createLayer = function (type, url, options) {
+            return EsriService.getLayer(type, url, options);
+        };
         this.populateLayerInfo = function (layer) {
             var deferred = $q.defer();
             var data = { 'f': 'json' };

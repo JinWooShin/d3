@@ -3,11 +3,13 @@
     "use strict";
     define([
         'service/esriService',
+        'service/mapService',
+        'service/layerService',
 
         'controller/indexCtrl',
         'controller/mapCtrl',
         'controller/toolCtrl'
-    ], function (MapService, IndexCtrl, MapCtrl, toolCtrl) {
+    ], function (EsriService, MapService, LayerService, IndexCtrl, MapCtrl, toolCtrl) {
         
         function init(App) {    
             angular.bootstrap(document.body, ['app']);

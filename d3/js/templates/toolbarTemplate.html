@@ -19,14 +19,24 @@
                 <li><a href="#">Link</a></li>
                 <li><a href="#">Link</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Hot Spring<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Add Layer<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#" ng-click="addLayer('hotspring')">Esri default</a></li>
-                        <li><a href="#" ng-click="addLayer('hotspring',true)">D3</a></li>                        
+                        <li><a href="#" ng-click="addLayer('hotspring')">Hot Spring (Esri default)</a></li>
+                        <li><a href="#" ng-click="addLayer('hotspring','d3')">Hot Sproing (Custom marker)</a></li>                        
                         <li class="divider"></li>
-                        <li><a href="#" ng-click="addLayer('hotspring', true, true)">D3 with event</a></li>
+                        <li><a href="#" ng-click="addLayer('hotspring', 'renderer')">Hot Spring (Custom Renderer)</a></li>
                         <li class="divider"></li>
-                        <li><a href="#" ng-click="addLayer('hotspring', true,true, true)">D3 legend</a></li>
+                        <li><a href="#" ng-click="">Placeholder</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Histogram Query<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#" ng-click="drawSelection('Rectangle')"><i class="fa fa-square-o fa"></i>Rectangle</a></li>
+                        <li><a href="#" ng-click="drawSelection('Circle')"><i class="fa fa-circle-o fa"></i>Circle</a></li>                        
+                        <li><a href="#" ng-click="drawSelection('FREEHAND_POLYGON')"><i class="fa fa-pencil fa">Freehand</i></a></li>
+                        <li><a href="#" ng-click="drawSelection('Polygon')"><i class="fa fa-cube fa">Polygon</i></a></li>
+                        <li><a href="#" ng-click="drawSelection('Ellipse')"><i class="fa fa-circle-thin fa">Ellipse</i></a></li>
                     </ul>
                 </li>
             </ul>           

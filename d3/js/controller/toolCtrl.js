@@ -2,42 +2,40 @@
     "use strict";
 
     angular.module('app')
-    .controller('toolCtrl', ['$scope', '$log', '$compile', 'EsriService', function ($scope, $log, $compile, EsriService) {
+    .controller('toolCtrl', ['$scope', '$log', '$compile', 'MapService', 'LayerService',
+    function ($scope, $log, $compile, MapService, LayerService) {
         var layers = {
             'hotspring': '//maps.ngdc.noaa.gov/arcgis/rest/services/hot_springs/MapServer/0'
         };
         var quantize;
-        $scope.addLayer = function (type, useD3, addEvent, addLegend) {
-            EsriService.clearAllGraphicLayers();
+        $scope.addLayer = function (type, renderType) {
+            MapService.clearAllGraphicLayers();
             var url = layers[type];
-            var option = { id: type, styling: !useD3, outFields:"[*]", className:type};
+            var options = { id: type, styling: renderType!==false, outFields: "[*]", className: type };
             var layer = null;
             if (url) {
-                layer = EsriService.createLayer(url, option, "feature");
+                layer = LayerService.createLayer("feature", url, options);
             }
-            if (useD3) {
+            if (renderType === 'd3') {
                 quantize = d3.scale.quantize().domain([0, 100]).range(d3.range(5));
                 layer.on("graphic-draw", function (evt) {
                     var attrs = evt.graphic.attributes;
                     var value = (attrs && attrs.TEMP_C) || undefined;
                     
                     var range = quantize(value);
-                    evt.node.setAttribute("data-classification", range);
-                    if (addEvent) {
-                        //ToDo:: add event to d3 graphic
-                    }
-                });
-                
-                if (addLegend) {
-                    //ToDo:: draw legend with d3
-                }
-            } else {
+                    evt.node.setAttribute("data-classification", range);                    
+                });                
+            } else if (renderType = 'renderer'){
                 //ToDo : do nothing
             }
-            EsriService.addLayer(layer);
+            MapService.addLayer(layer);
         }
         $scope.testFunction = function (evt) {
             console.log(evt);
+        },
+        $scope.drawSelection = function (shape) {
+            $log.debug("draw selection tools");
+            
         }
     }])
     .directive('toolMenu', [function () {

@@ -3,7 +3,7 @@
 
     angular.module('app')
        
-    .controller('MapCtrl', ['$rootScope', '$scope', '$attrs', 'EsriService', function ($rootScope, $scope, $attrs, EsriService) {
+    .controller('MapCtrl', ['$rootScope', '$scope', '$attrs', 'MapService', function ($rootScope, $scope, $attrs, MapService) {
         var self = this;
         var mapDiv;
 
@@ -27,7 +27,7 @@
                 zoom: $attrs.zoom ? parseInt($attrs.zoom) : 2,
                 basemap: $attrs.basemap ? $attrs.basemap : 'streets'
             };
-            $scope.map = EsriService.createMap($attrs.id, options);
+            $scope.map = MapService.createMap($attrs.id, options);
             $scope.map.resize();
         };
     }])

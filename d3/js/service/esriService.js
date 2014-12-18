@@ -2,42 +2,47 @@
     "use strict";
     define([
         'esri/map',
+
         'esri/layers/ArcGISDynamicMapServiceLayer',
         'esri/layers/FeatureLayer',
-        'esri/layers/GraphicsLayer'
+        'esri/layers/GraphicsLayer',
 
-    ], function (Map, ArcGISDynamicMapServiceLayer, FeatureLayer, GraphicsLayer) {
+        'esri/tasks/query',
+        'esri/tasks/QueryTask',
+
+        'esri/geometry/Circle',
+        
+        'esri/symbols/SimpleMarkerSymbol',
+        'esri/symbols/SimpleLineSymbol',
+        'esri/symbols/SimpleFillSymbol',
+
+        'esri/config',
+
+        'esri/Color',
+
+        'esri/toolbars/draw'
+
+    ], function (Map,
+            ArcGISDynamicMapServiceLayer, FeatureLayer, GraphicsLayer, 
+            Query, QueryTask,
+            Circle,
+            SimpleMarkerSymbol, SimpleLineSymbol, SimpleFillSymbol,
+            esriConfig,
+            Color,
+            Draw
+        ) {
         angular.module('app')
         .provider('EsriService', [function () {
-            var map = null;
-            var layers = [];
+             
             this.$get = function ($log, $rootScope) {
                 return {
-                    createMap: function (id, options) {
-                        map = new Map(id, options);
-                        if (layers.length > 0) {
-                            map.addLayers(layers);
-                            layer = [];
-                        }
-                        map.on('load', function () {
-                            $rootScope.$broadcast('map-load');
-                        });
-                        map.on('click', function (e) {
-                            $rootScope.$broadcast('map-click', e);
-                        });
-                        return map;
+                    getMap: function (id, options) {
+                        return new Map(id, options);
                     },
-                    getMap: function () {
-                        if (map) {
-                            return map;
-                        } else {
-                            console.log("Map is not initiated. Create map first");
-                        }
+                    getDrawToolbar: function(map) {
+                        return new Draw(map);
                     },
-                    addLayer: function(layer) {
-                        map.addLayer(layer);
-                    },
-                    createLayer: function (url, options, type) {
+                    getLayer: function (type, url, options) {
                         var layer = null;
                         switch (type) {
                             case "feature":
@@ -58,14 +63,45 @@
                             throw new Error("invalid layer parameter");
                         }
                     },
-                    clearAllGraphicLayers: function () {
-                        var layerIds = map.graphicsLayerIds;
-                        angular.forEach(layerIds, function (id) {
-                            //if (map.basemapLayerIds.indexOf(id) === -1) {
-                                map.removeLayer(map.getLayer(id));
-                            //}
-                        });
+                    getQuery: function () {
+                        return new Query();
+                    },
+                    getQueryTask: function (url, options) {
+                        return new QueryTask(url, options);
+                    },
+                    getGeometryCircle: function (param1, param2) {
+                        if (param1.center) {
+                            return new Circle(param1);
+                        } else {
+                            return new Circle(param1, param2);
+                        }
+                    },
+                    getSymbolsSimpleSymbol: function (type, param1, param2, param3, param4) {
+                        var symbol = null;
+                        switch (type) {
+                            case 'marker':
+                                symbol = new SimpleMarkerSymbol(param1, param2, param3, param4);
+                                break;
+                            case 'line':
+                                symbol = new SimpleLineSymbol(param1, param2, param3);
+                                break;
+                            case 'fill':
+                                symbol = new SimpleFillSymbol(param1, param2, param3);
+                                break;
+                            default:
+                                throw new Error("Invalid symbol type");
+                                break;
+                        };
+                        if (symbol) {
+                            return symbol;
+                        } else {
+                            throw new Error("Invalid symbol parameters");
+                        }
+                    },
+                    getColor: function (color) {
+                        return new Color(color);
                     }
+                    
                 }
             }
         }]);

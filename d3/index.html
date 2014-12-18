@@ -22,7 +22,7 @@
     <div class="container layout" ng-controller="indexCtrl">
         <tool-menu></tool-menu>
         <div class="row">
-            <div ng-class="{col-xs-6:result, col-xs-12:!result}">
+            <div ng-class="{'col-xs-6':result, 'col-xs-12':!result}">
                 <esri-map id="map" basemap="gray" zoom="5" ></esri-map>
             </div>
             <div ng-if="result" class="col-xs-6">
