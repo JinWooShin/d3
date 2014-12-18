@@ -23,11 +23,12 @@
         };
         this.createMap = function () {
             var options = {
-                center: $attrs.center ? JSON.parse($attrs.center) : [-56.049, 38.485],
+                center: $attrs.center ? JSON.parse($attrs.center) : [-115.049, 40.485],
                 zoom: $attrs.zoom ? parseInt($attrs.zoom) : 2,
                 basemap: $attrs.basemap ? $attrs.basemap : 'streets'
             };
-            $scope.map = EsriService.createMap($attrs.id, options);            
+            $scope.map = EsriService.createMap($attrs.id, options);
+            $scope.map.resize();
         };
     }])
 

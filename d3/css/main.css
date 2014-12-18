@@ -18,6 +18,9 @@ html, body {
         #map {
             height: 100%;
             width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+            border-radius: 4px;
         }
         
         .hotspring > path {

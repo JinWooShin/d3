@@ -8,7 +8,7 @@
         };
         var quantize;
         $scope.addLayer = function (type, useD3, addEvent, addLegend) {
-            EsriService.clearAllLayers();
+            EsriService.clearAllGraphicLayers();
             var url = layers[type];
             var option = { id: type, styling: !useD3, outFields:"[*]", className:type};
             var layer = null;

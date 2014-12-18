@@ -19,13 +19,13 @@
     <script src="js/main.js"></script>
 </head>
 <body>
-    <div class="container layout">
+    <div class="container layout" ng-controller="indexCtrl">
         <tool-menu></tool-menu>
         <div class="row">
-            <div class="col-xs-6">
-                <esri-map id="map" basemap="gray"></esri-map>
+            <div ng-class="{col-xs-6:result, col-xs-12:!result}">
+                <esri-map id="map" basemap="gray" zoom="5" ></esri-map>
             </div>
-            <div class="col-xs-6">
+            <div ng-if="result" class="col-xs-6">
 
             </div>
         </div>
