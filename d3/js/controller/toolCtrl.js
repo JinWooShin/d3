@@ -9,6 +9,7 @@
         };
         var quantize;
         var drawHistogram = function (features) {
+            // Update is not implemented.
             var formatCount = d3.format(",.0f");
             var values = features.map(function (feature) {                
                 return feature.attributes.TEMP_C;                
