@@ -57,6 +57,11 @@ html, body {
             stroke-width: 22;
             stroke-opacity: 0.2;
         }
+        .d3Features:hover {
+            stroke: red !important;
+            stroke-width: 25 !important;
+            stroke-opacity: 1.0 !important;
+        }
 
         #legend svg {
             vertical-align: middle;

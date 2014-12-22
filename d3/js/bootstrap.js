@@ -5,11 +5,12 @@
         'service/esriService',
         'service/mapService',
         'service/layerService',
+        'service/queryService',
 
         'controller/indexCtrl',
         'controller/mapCtrl',
         'controller/toolCtrl'
-    ], function (EsriService, MapService, LayerService, IndexCtrl, MapCtrl, toolCtrl) {
+    ], function (EsriService, MapService, LayerService, QueryService, IndexCtrl, MapCtrl, toolCtrl) {
         
         function init(App) {    
             angular.bootstrap(document.body, ['app']);
